@@ -105,19 +105,19 @@ export class BlockchainService{
   pass = "123123aa";
   userContract = new this.web3.eth.Contract(this.abi,this.address);
   async addUser(phone_number,user_name) {
-       this.web3.eth.personal.unlockAccount(this.account,this.pass,9999)
+      await this.web3.eth.personal.unlockAccount(this.account,this.pass,9999)
       return this.userContract.methods
       .add(phone_number,user_name)
       .send({from: this.account});
   }
   async getUser(phone_number) {
-    this.web3.eth.personal.unlockAccount(this.account,this.pass,9999)
+   await this.web3.eth.personal.unlockAccount(this.account,this.pass,9999)
    return this.userContract.methods
    .get(phone_number)
    .call()
 }
 async checkUserExtis(phone_number) {
-  this.web3.eth.personal.unlockAccount(this.account,this.pass,9999)
+ await this.web3.eth.personal.unlockAccount(this.account,this.pass,9999)
  return this.userContract.methods
  .userExists(phone_number)
  .call()
