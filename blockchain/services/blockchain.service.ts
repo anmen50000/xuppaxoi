@@ -105,7 +105,7 @@ export class BlockchainService{
   pass = "123123aa";
   userContract = new this.web3.eth.Contract(this.abi,this.address);
   async addUser(phone_number,user_name) {
-      await this.web3.eth.personal.unlockAccount(this.account,this.pass,9999)
+    await this.web3.eth.personal.unlockAccount(this.account,this.pass,9999)
       return this.userContract.methods
       .add(phone_number,user_name)
       .send({from: this.account});
